@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "YouTube Thingy",
+  "description": "This is cool.",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "./img/play.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "webNavigation",
+    "webRequest"
+  ]
+}
