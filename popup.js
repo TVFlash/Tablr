@@ -31,12 +31,11 @@ var sort = {
     alert("Next");
   },
 };
-
+  
 document.addEventListener('DOMContentLoaded', function () {
 
   var alpha = document.getElementById('alpha');
 
-  alpha.addEventListener('click', sort.play, true); 
 
   var fourmTabs = new Array();
   chrome.tabs.query({'url': '<all_urls>'}, function (tabs) {
@@ -44,13 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
     for (var i = 0; i < tabs.length; i++) {
           fourmTabs[i] = tabs[i].title.toLowerCase() + "$" + tabs[i].id;
       }
+        var sort = {
+          alphaSort: function(){
+          fourmTabs.sort();
 
-      fourmTabs.sort();
+          for (var i = 0; i < tabs.length; i++) 
+            chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
+        }
+      };
+        alpha.addEventListener('click', sort.alphaSort, true); 
 
-    for (var i = 0; i < tabs.length; i++) {
-      chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
-   }
-    //alert("+"+fourmTabs[fourmTabs.length - 1 ]+"+");
   });
 
 });
