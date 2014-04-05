@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var fourmTabs = new Array();
   chrome.tabs.query({'url': '<all_urls>'}, function (tabs) {
-    
     for (var i = 0; i < tabs.length; i++) {
           fourmTabs[i] = tabs[i].title.toLowerCase() + "$" + tabs[i].id;
       }
@@ -47,8 +46,17 @@ document.addEventListener('DOMContentLoaded', function () {
           alphaSort: function(){
           fourmTabs.sort();
 
-          for (var i = 0; i < tabs.length; i++) 
+          var prev;
+          for (var i = 0; i < tabs.length; i++){
             chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
+
+          if(prev == fourmTabs[i].split("$")[0])
+              chrome.tabs.remove(parseFloat(fourmTabs[i].split("$")[1]));
+          else
+            alert(prev + "!=" + fourmTabs[i].split("$")[0]);
+          prev = fourmTabs[i].split("$")[0];
+        }
+
         }
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
