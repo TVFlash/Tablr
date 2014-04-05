@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var alpha = document.getElementById('alpha');
   var searched = document.getElementById('searched');
-  var search = document.getElementById('search');
+  //var text = document.getElementById('text');
+  var hot = document.getElementById('hot');
 
   var query;
   var fourmTabs = new Array();
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
         searched.addEventListener('click', sort.searchSort, true);
+        //text.addEventListener(sort.searchSort, true);
         hot.addEventListener('click', sort.hotSort, true);
 
   });
