@@ -17,6 +17,7 @@ var playlist = {
   },
 
   play: function(){
+    //player.playVideo();
     alert("Play");
   },
 
@@ -102,7 +103,22 @@ var kittenGenerator = {
 
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
-  kittenGenerator.requestKittens();
+
+  /**var tag = document.createElement('script');
+  tag.src = "http://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+        height: '50',
+        width: '50',
+        videoId: 'BLZAlp0if3M',
+    });
+  }**/
+
+  //  kittenGenerator.requestKittens();
   playlist.populate();
   var play = document.getElementById('play');
   var stop = document.getElementById('stop');
@@ -113,5 +129,21 @@ document.addEventListener('DOMContentLoaded', function () {
   stop.addEventListener('click', playlist.stop, true); 
   reverse.addEventListener('click', playlist.reverse, true); 
   next.addEventListener('click', playlist.next, true); 
+
+  var fourmTabs = new Array();
+  chrome.tabs.query({'url': '*://www.youtube.com/*'}, function (tabs) {
+      for (var i = 0; i < tabs.length; i++) {
+          fourmTabs[i] = tabs[i];
+      }
+
+      // Moved code inside the callback handler
+      for (var i = 0; i < fourmTabs.length; i++) {
+          if (fourmTabs[i] != null)
+             alert(fourmTabs[i].url);
+          else {
+              window.console.log("??" + i);
+          }
+      }
+  });
 
 });
