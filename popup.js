@@ -3,35 +3,11 @@
 // found in the LICENSE file.
 
 /**
- * Global variable containing the query we'd like to pass to Flickr. In this
- * case, kittens!
+ * Hello, World!
  *
- * @type {string}
- */
-
-var sort = {
-
-  populate: function(){
-  //TODO:Grab all active playlists
-  },
-
-  play: function(){
-    alert("Play");
-  },
-
-  stop: function(){
-    alert("Stop");
-  },
-
-  reverse: function(){
-    alert("Reverse");
-  },
-
-  next: function(){
-    alert("Next");
-  },
-};
-  
+ * @author Timothy Vincent
+ * @author Seung Song
+ */  
 document.addEventListener('DOMContentLoaded', function () {
 
   var alpha = document.getElementById('alpha');
@@ -67,10 +43,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           }
 
+        },
+
+        hotSort: function(){
+        var views = new Array();
+
+        for(var i = 0; i < tabs.length; i++)
+          chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': Math.round(Math.random() * tabs.length)});
+
         }
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
         searched.addEventListener('click', sort.searchSort, true);
+        hot.addEventListener('click', sort.hotSort, true);
 
   });
 
