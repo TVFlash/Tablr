@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
           for (var i = 0; i < tabs.length; i++) {
             if (fourmTabs[i].indexOf(query)!= -1){
               chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': 0});
+              chrome.tabs.update(parseFloat(fourmTabs[i].split("$")[1]), {'active': true  });
             }
           }
 
@@ -56,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
         searched.addEventListener('click', sort.searchSort, true);
-        //text.addEventListener(sort.searchSort, true);
         hot.addEventListener('click', sort.hotSort, true);
 
   });
