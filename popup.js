@@ -52,8 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
           if(prev == fourmTabs[i].split("$")[0])
               chrome.tabs.remove(parseFloat(fourmTabs[i].split("$")[1]));
-          else
-            alert(prev + "!=" + fourmTabs[i].split("$")[0]);
           prev = fourmTabs[i].split("$")[0];
         }
 
