@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
 
-  "name": "YouTube Thingy",
+  "name": "Tablr",
   "description": "This is cool.",
-  "version": "0.1",
+  "version": "0.5",
 
   "browser_action": {
-    "default_icon": "img/AtoZ.png",
+    "default_icon": "img/defaultIcon.png",
     "default_popup": "popup.html"
   },
 
