@@ -11,6 +11,8 @@
   },
   "permissions": [
     "webNavigation",
-    "webRequest"
+    "webRequest",
+    "tabs",
+    "http://*/*", "https://*/*"
   ]
 }
