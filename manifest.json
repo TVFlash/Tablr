@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Tablr",
-  "description": "A powerful tab manager at your fingertips!",
-  "version": "0.5",
+  "description": "A powerful tab manager at your fingertips!  ",
+  "version": "0.6",
 
   "browser_action": {
     "default_icon": "img/defaultIcon.png",
@@ -12,7 +12,8 @@
 
   "icons": {
      "128": "img/hot.png",
-     "48": "img/hot.png"
+     "48": "img/icon48.png",
+     "16": "img/defaultIcon16.png"
   },
 
   "permissions": [
