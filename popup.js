@@ -11,14 +11,25 @@
 var QUERY = 'dogs';
 
 var playlist = {
-  populate: function(){
-  alert("Populated");
 
+  populate: function(){
+  //TODO:Grab all active playlists
   },
 
   play: function(){
     alert("Play");
+  },
 
+  stop: function(){
+    alert("Stop");
+  },
+
+  reverse: function(){
+    alert("Reverse");
+  },
+
+  next: function(){
+    alert("Next");
   },
 };
 
@@ -92,11 +103,15 @@ var kittenGenerator = {
 // Run our kitten generation script as soon as the document's DOM is ready.
 document.addEventListener('DOMContentLoaded', function () {
   kittenGenerator.requestKittens();
-  //var popup = document.getElementById('img');
-  document.body.addEventListener('click', playlist.populate, true); 
+  playlist.populate();
+  var play = document.getElementById('play');
+  var stop = document.getElementById('stop');
+  var reverse = document.getElementById('reverse');
+  var next = document.getElementById('next');
 
-  //popup.addEventListener('click', function()){
-    //playlist.populate(); 
-  //});
-  //playlist.populate();
+  play.addEventListener('click', playlist.play, true); 
+  stop.addEventListener('click', playlist.stop, true); 
+  reverse.addEventListener('click', playlist.reverse, true); 
+  next.addEventListener('click', playlist.next, true); 
+
 });
