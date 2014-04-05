@@ -35,8 +35,10 @@ var sort = {
 document.addEventListener('DOMContentLoaded', function () {
 
   var alpha = document.getElementById('alpha');
+  var searched = document.getElementById('searched');
+  var search = document.getElementById('search');
 
-
+  var query;
   var fourmTabs = new Array();
   chrome.tabs.query({'url': '<all_urls>'}, function (tabs) {
     for (var i = 0; i < tabs.length; i++) {
@@ -44,20 +46,31 @@ document.addEventListener('DOMContentLoaded', function () {
       }
         var sort = {
           alphaSort: function(){
-          fourmTabs.sort();
+            fourmTabs.sort();
 
-          var prev;
-          for (var i = 0; i < tabs.length; i++){
-            chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
+            var prev;
+            for (var i = 0; i < tabs.length; i++){
+              chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
 
-          if(prev == fourmTabs[i].split("$")[0])
-              chrome.tabs.remove(parseFloat(fourmTabs[i].split("$")[1]));
-          prev = fourmTabs[i].split("$")[0];
-        }
+              if(prev == fourmTabs[i].split("$")[0])
+                chrome.tabs.remove(parseFloat(fourmTabs[i].split("$")[1]));
+              prev = fourmTabs[i].split("$")[0];
+            }
+          },
+
+        searchSort: function(){
+          query = search.value.toLowerCase(); 
+
+          for (var i = 0; i < tabs.length; i++) {
+            if (fourmTabs[i].indexOf(query)!= -1){
+              chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': 0});
+            }
+          }
 
         }
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
+        searched.addEventListener('click', sort.searchSort, true);
 
   });
 
