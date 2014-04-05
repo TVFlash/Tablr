@@ -6,17 +6,9 @@
   "version": "0.1",
 
   "browser_action": {
-    "default_icon": "img/play.png",
+    "default_icon": "img/AtoZ.png",
     "default_popup": "popup.html"
   },
-
-  "content_scripts": [ {
-     "all_frames": false,
-     "css": [  ],
-     "js": [ "youtubeLoader.js" ],
-     "matches": [ "*://*.youtube.com/*" ],
-     "run_at": "document_end"
-  } ],
 
   "permissions": [
     "webNavigation",
