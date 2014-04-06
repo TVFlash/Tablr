@@ -3,10 +3,22 @@
 
   "name": "Tablr",
   "description": "A powerful tab manager at your fingertips!",
-  "version": "1.1",
+  "version": "1.2",
+    "background": {
+        "scripts": ["background.js"]
+    }, 
+    "commands": {
+      "toggle-sort": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+A",
+          "mac": "Command+Shift+A"
+        },
+        "description": "Sorts the tabs in A-Z"
+      }
+    },
 
   "browser_action": {
-    "default_icon": "img/defaultIcon.png",
+    "default_icon": "img/icon.png",
     "default_popup": "popup.html"
   },
 
@@ -20,6 +32,10 @@
     "webNavigation",
     "webRequest",
     "tabs",
-    "http://*/*", "https://*/*"
+    "http://*/*", 
+    "https://*/*"
   ]
+
 }
+
+
