@@ -12,14 +12,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var alpha = document.getElementById('alpha');
   var searched = document.getElementById('searched');
-  //var text = document.getElementById('text');
+  var text =  document.querySelector('#search');
   var hot = document.getElementById('hot');
+  var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+  var regex = new RegExp(expression);
+  var titleSearch;
+  var clearTrue;
+
+  chrome.storage.sync.get({
+    titleTrue: true,
+    clearTrue: true
+  }, function(items) {
+    titleSearch = items.titleTrue;
+    clearTrue = items.clearTrue;
+  });
 
   var query;
   var fourmTabs = new Array();
   chrome.tabs.query({'url': '<all_urls>'}, function (tabs) {
     for (var i = 0; i < tabs.length; i++) {
-          fourmTabs[i] = tabs[i].title.toLowerCase() + "$" + tabs[i].id;
+          if(titleSearch)
+            fourmTabs[i] = tabs[i].title.toLowerCase() + "$" + tabs[i].id;
+          else{
+            if(true)
+              fourmTabs[i] = tabs[i].url.toLowerCase();
+              fourmTabs[i] = fourmTabs[i].replace(/^https?:\/\//,'') + "$" + tabs[i].id;
+              console.log(fourmTabs[i]);
+          }
       }
         var sort = {
           alphaSort: function(){
@@ -41,23 +60,26 @@ document.addEventListener('DOMContentLoaded', function () {
           for (var i = 0; i < tabs.length; i++) {
             if (fourmTabs[i].indexOf(query)!= -1){
               chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': 0});
-              chrome.tabs.update(parseFloat(fourmTabs[i].split("$")[1]), {'active': true  });
+              chrome.tabs.update(parseFloat(fourmTabs[i].split("$")[1]), {'active': true });
             }
           }
 
         },
 
         hotSort: function(){
-        var views = new Array();
-
-        for(var i = 0; i < tabs.length; i++)
-          chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': Math.round(Math.random() * tabs.length)});
-
+          var win=window.open('settings.html', '_blank');
+          win.focus();
         }
       };
         alpha.addEventListener('click', sort.alphaSort, true); 
         searched.addEventListener('click', sort.searchSort, true);
         hot.addEventListener('click', sort.hotSort, true);
+        text.addEventListener('keypress', function(e){
+          var key = e.which || e.keyCode;
+
+          if(key == 13)
+            sort.searchSort();
+        });
 
   });
 

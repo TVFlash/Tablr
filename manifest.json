@@ -3,7 +3,8 @@
 
   "name": "Tablr",
   "description": "A powerful tab manager at your fingertips!",
-  "version": "1.2",
+  "version": "1.2.1",
+  "options_page": "settings.html",
     "background": {
         "scripts": ["background.js"]
     }, 
@@ -32,6 +33,7 @@
     "webNavigation",
     "webRequest",
     "tabs",
+    "storage",
     "http://*/*", 
     "https://*/*"
   ]
