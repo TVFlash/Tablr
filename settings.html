@@ -2,8 +2,14 @@
 
 <html lang="en">
 <head>
+<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
+	<style>
+		body {
+			font-family: 'Josefin Sans',  sans-serif;
+			font-size: 14px;
+		}
+	</style>
 	<title>Tablr Settings</title>
 
 </head>
@@ -12,10 +18,10 @@
 
 	<p>Alphabetic Sort type</p>
 		<input type="radio" id="titleTrue" name="sort" value="title" checked>By Title<br>
-		<input type="radio" name="sort" value="url">By URL<br>
+		<input type="radio" id="urlTrue" name="sort" value="url">By URL<br>
 	<p>Clear duplicate tabs</p>
 		<input type="radio" id="clearTrue" name="clear" value="cYes" checked>Yes<br>
-		<input type="radio" name="clear" value="cNo">No<br>
+		<input type="radio" id="clearFalse" name="clear" value="cNo">No<br>
 
 		<div id="status"></div>
 		<button id="save" >Save</button>

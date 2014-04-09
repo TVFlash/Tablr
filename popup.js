@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', function () {
   var searched = document.getElementById('searched');
   var text =  document.querySelector('#search');
   var hot = document.getElementById('hot');
-  var expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
-  var regex = new RegExp(expression);
   var titleSearch;
   var clearTrue;
 
   chrome.storage.sync.get({
     titleTrue: true,
-    clearTrue: true
+    urlTrue: false,
+    clearTrue: true,
+    clearFalse: false
   }, function(items) {
     titleSearch = items.titleTrue;
     clearTrue = items.clearTrue;
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
           if(titleSearch)
             fourmTabs[i] = tabs[i].title.toLowerCase() + "$" + tabs[i].id;
           else{
-            if(true)
               fourmTabs[i] = tabs[i].url.toLowerCase();
-              fourmTabs[i] = fourmTabs[i].replace(/^https?:\/\//,'') + "$" + tabs[i].id;
-              console.log(fourmTabs[i]);
+              fourmTabs[i] = fourmTabs[i].replace(/^https?:\/\//,'')
+              fourmTabs[i] = fourmTabs[i].replace(/^www\./, '') + "$" + tabs[i].id;
+              console.log(tabs[i].url.toLowerCase() + " -> " +fourmTabs[i]);
           }
       }
         var sort = {

@@ -24,6 +24,10 @@ function restore_options() {
   }, function(items) {
     document.getElementById('titleTrue').checked = items.titleTrue;
     document.getElementById('clearTrue').checked = items.clearTrue;
+    document.getElementById('urlTrue').checked = !items.titleTrue;
+    document.getElementById('clearFalse').checked = !items.clearTrue;
+
+
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
