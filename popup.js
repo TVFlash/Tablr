@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   chrome.storage.sync.get({
     titleTrue: true,
-    urlTrue: false,
-    clearTrue: true,
-    clearFalse: false
+    clearTrue: true
   }, function(items) {
     titleSearch = items.titleTrue;
     clearTrue = items.clearTrue;
@@ -48,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
             for (var i = 0; i < tabs.length; i++){
               chrome.tabs.move(parseFloat(fourmTabs[i].split("$")[1]), {'index': i});
 
-              if(prev == fourmTabs[i].split("$")[0])
+              if(clearTrue && prev == fourmTabs[i].split("$")[0])
                 chrome.tabs.remove(parseFloat(fourmTabs[i].split("$")[1]));
               prev = fourmTabs[i].split("$")[0];
             }
