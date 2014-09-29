@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 /**
- * Hello, World!
+ * Tablr
  *
  * @author Timothy Vincent
  * @author Seung Song
