@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
               fourmTabs[i] = tabs[i].url.toLowerCase();
               fourmTabs[i] = fourmTabs[i].replace(/^https?:\/\//,'')
               fourmTabs[i] = fourmTabs[i].replace(/^www\./, '') + "$" + tabs[i].id;
-              console.log(tabs[i].url.toLowerCase() + " -> " +fourmTabs[i]);
           }
       }
         var sort = {
